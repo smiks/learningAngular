@@ -1,40 +1,10 @@
 <div class="demo-content container container-fluid">
   <div class="row">
     <div class="col-12 text-center">
-      <h1 class="pointer" (click)="goHome()">Quotes Library</h1>
+      <h1 class="pointer">{{ title }}</h1>
       <a href="https://github.com/smiks/learningAngular" target="_blank">(github)</a>
     </div>
   </div>
-  <form [formGroup]="quoteForm" class="row searchBar" (ngSubmit)="onSubmit();">
-    <div class="col-4">
-      <input class="form-control" placeholder="Keywords" formControlName="keywords"/>
-    </div>
-    <div class="col-2">
-      <button class="btn btn-primary">SEARCH</button>
-    </div>
-  </form>
-
-  @if(showMountainsBtn){
-    <div class="col-12 text-center">
-      <button class="btn btn-secondary" (click)="switchToMountainQuotes()">Mountain Quotes</button>
-    </div>
-  } @else {
-    <div class="col-12 text-center">
-      <button class="btn btn-secondary" (click)="goHome()">Go Back</button>
-    </div>   
-  }
-
-  <div class="row">
-    <div class="col-12 text-center">
-      <app-quote-of-the-day></app-quote-of-the-day>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-12 text-center">
-      <app-quotes [quotes]="quotes" [keywords]="keywords"></app-quotes>
-    </div>
-  </div>    
 </div>
 
 

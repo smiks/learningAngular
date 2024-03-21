@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { QuotesService } from '../services/quotes.service';
+import { Component, OnInit, Output } from '@angular/core';
+import { QuotesService } from '../../services/quotes.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-mountain-quotes',
@@ -14,8 +15,8 @@ export class MountainQuotesComponent implements OnInit {
     quote: "test quote",
     author: "Author"
   }]
-  
-  constructor(private quotesService: QuotesService) {
+
+  constructor(private quotesService: QuotesService, private router: Router) {
   }
 
   sanitizeQuote(quote: string): string {
@@ -32,7 +33,13 @@ export class MountainQuotesComponent implements OnInit {
       keywords: "mountains"
     }
     this.quotesService.getQuotes(_data).subscribe( (response) => {
-      this.quotes = Object.values(response.quotes)
+      if(response.quotes){
+        this.quotes = Object.values(response.quotes)
+      }
     })
+  }
+
+  goHome() {
+    this.router.navigate(['/'])
   }
 }

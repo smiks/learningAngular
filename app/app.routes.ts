@@ -1,8 +1,13 @@
 import { Routes } from '@angular/router';
-import { MountainQuotesComponent } from './mountain-quotes/mountain-quotes.component';
 
-export const routes: Routes = [
+
+export const routes: Routes = [ 
     {
-        path: 'mountains', component: MountainQuotesComponent
+        path: '', 
+        loadComponent: () =>  import('./components/landing-page/landing-page.component').then( c => c?.LandingPageComponent )
+    },    
+    {
+        path: 'mountains', 
+        loadComponent: () =>  import('./components/mountain-quotes/mountain-quotes.component').then( c => c?.MountainQuotesComponent )
     }
 ];
