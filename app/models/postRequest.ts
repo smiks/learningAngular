@@ -1,8 +1,4 @@
-export interface PostRequestQuotes {
+export interface PostRequestMemes {
     token: string;
     keywords: string;
-}
-
-export interface PostRequestQOTD {
-    token: string;
 }

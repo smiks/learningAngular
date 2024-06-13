@@ -1,0 +1,17 @@
+<div class="meme">
+    <div class="row">
+        <div class="col-12">
+            {{name | uppercase }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <img src="{{getMemeUrl(locPrefix, location)}}" class="memeImg" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            {{likes | numberpipe: 4 }}
+        </div>
+    </div>    
+</div>

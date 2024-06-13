@@ -1,27 +1,27 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { QuotesService } from '../../services/quotes.service';
+import { MemesService } from '../../services/memes.service';
+import { MemeComponent } from '../meme/meme.component';
 import { Router } from '@angular/router';
-import { QuoteOfTheDayComponent } from '../quote-of-the-day/quote-of-the-day.component';
-import { QuotesComponent } from '../quotes/quotes.component';
 
 
 @Component({
   selector: 'app-landing-page',
   standalone: true,
-  imports: [ReactiveFormsModule, QuoteOfTheDayComponent, QuotesComponent],
+  imports: [ReactiveFormsModule, MemeComponent],
   templateUrl: './landing-page.component.html',
   styleUrl: './landing-page.component.scss'
 })
 export class LandingPageComponent {
-  title: string = 'Quotes Library';
+  title: string = 'Memes Library';
   quoteForm: FormGroup;
-  quotes: any = []
+  memes: any = []
+  locPrefix: string = ""
   keywords: string = ""
 
   constructor(
     private fb: FormBuilder, 
-    private quotesService: QuotesService,
+    private memesService: MemesService,
     private router: Router
     ) {
     this.quoteForm = this.fb.group({
@@ -34,18 +34,19 @@ export class LandingPageComponent {
     this.keywords = this.quoteForm.value.keywords || ''
     if(this.keywords.length){
       
-      this.fetchQuotes()
+      this.fetchMemes()
     }
     
   }
 
-  fetchQuotes() {
+  fetchMemes() {
     const _data: any = {
-      token: 'tttttoken',
+      key: 'myPrecious',
       keywords: this.keywords
     }
-    this.quotesService.getQuotes(_data).subscribe( (response) => {
-      this.quotes = Object.values(response.quotes)
+    this.memesService.getMemes(_data).subscribe( (response: any) => {
+      this.memes = Object.values(response.memes)
+      this.locPrefix = response.locPrefix
     })
   }
 

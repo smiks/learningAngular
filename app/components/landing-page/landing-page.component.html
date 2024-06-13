@@ -4,23 +4,22 @@
           <input class="form-control" placeholder="Keywords" formControlName="keywords"/>
         </div>
         <div class="col-2">
-          <button class="btn btn-primary">SEARCH</button>
+          <button class="btn btn-primary">SEARCH 4 Memes</button>
         </div>
       </form>
     
-      <div class="col-12 text-center">
-        <button class="btn btn-secondary" (click)="switchToMountainQuotes()">Mountain Quotes</button>
-      </div>
     
+
+      
       <div class="row">
         <div class="col-12 text-center">
-          <app-quote-of-the-day></app-quote-of-the-day>
-        </div>
-      </div>
-    
-      <div class="row">
-        <div class="col-12 text-center">
-          <app-quotes [quotes]="quotes" [keywords]="keywords"></app-quotes>
+          @for(meme of memes; track meme){
+            <div class="row">
+              <div class="col-12 text-center">
+                <app-meme [name]="meme.name" [likes]="meme.likes" [locPrefix]="locPrefix" [location]="meme.location"></app-meme>
+              </div>
+            </div>
+          }
         </div>
       </div>      
 </div>

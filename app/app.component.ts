@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { QuoteOfTheDayComponent } from './components/quote-of-the-day/quote-of-the-day.component';
-import { QuotesComponent } from './components/quotes/quotes.component'
 
 @Component({
   selector: 'app-root',
@@ -11,7 +9,7 @@ import { QuotesComponent } from './components/quotes/quotes.component'
   styleUrl: './app.component.scss'
 })
 export class AppComponent { 
-  title: string = 'Quotes Library';
+  title: string = 'Memes Library';
 
 }
  
