@@ -1,4 +1,9 @@
 export interface PostRequestMemes {
-    token: string;
+    key: string;
     keywords: string;
+}
+
+export interface PostRequestLikeMeme {
+    key: string;
+    memeId: number;
 }

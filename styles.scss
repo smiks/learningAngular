@@ -4,3 +4,31 @@ html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .pointer { cursor: pointer; }
+
+.mcentered { margin: 0 auto; }
+
+
+.meme {
+    margin-bottom: 2em;
+    border-bottom: 1px solid grey;
+    .memeTitle {
+        font-size:17px;
+        font-weight: bold;
+    }
+
+    .memeImg {
+        width:500px;
+        height:auto;
+        padding: 1em;
+    }
+
+    .memeLike {
+        padding: 1em;
+    }
+
+    .likeIcon {
+        font-size: 24px;
+        font-weight: bold;
+        padding-right: 0.2em;
+    }
+}

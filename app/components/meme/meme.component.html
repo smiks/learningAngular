@@ -1,17 +1,20 @@
 <div class="meme">
     <div class="row">
-        <div class="col-12">
-            {{name | uppercase }}
+        <div class="col-lg-8 col-md-8 col-12 text-left memeTitle">
+            {{meme.name | uppercase }}
         </div>
     </div>
     <div class="row">
-        <div class="col-12">
-            <img src="{{getMemeUrl(locPrefix, location)}}" class="memeImg" />
+        <div class="col-lg-8 col-md-8 col-12 mcentered text-center">
+            <img src="{{getMemeUrl(locPrefix, meme.location)}}" class="memeImg" />
         </div>
     </div>
     <div class="row">
-        <div class="col-12">
-            {{likes | numberpipe: 4 }}
+        <div class="col-lg-8 col-md-8 col-12 text-left memeLike">
+            @if(!likedMemes[meme.id]){
+                <span class="likeIcon pointer" (click)="likeMeme(meme.id)">&uArr;</span>
+            }
+            <span>{{meme.likes | numberpipe: 4 }}</span>
         </div>
     </div>    
 </div>

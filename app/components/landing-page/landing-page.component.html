@@ -16,7 +16,7 @@
           @for(meme of memes; track meme){
             <div class="row">
               <div class="col-12 text-center">
-                <app-meme [name]="meme.name" [likes]="meme.likes" [locPrefix]="locPrefix" [location]="meme.location"></app-meme>
+                <app-meme [meme]="meme" [locPrefix]="locPrefix"></app-meme>
               </div>
             </div>
           }

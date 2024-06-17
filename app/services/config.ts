@@ -1,0 +1,1 @@
+export const BASE_URL: string = "https://memes.secure-atom.com/api/"
