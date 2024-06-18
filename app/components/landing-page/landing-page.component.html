@@ -16,7 +16,18 @@
           @for(meme of memes; track meme){
             <div class="row">
               <div class="col-12 text-center">
-                <app-meme [meme]="meme" [locPrefix]="locPrefix"></app-meme>
+                <app-meme [meme]="meme" [locPrefix]="locPrefix" [likedMemes]="likedMemes" [updateLikedMemes]="updateLikedMemes"></app-meme>
+              </div>
+            </div>
+          }
+          @if(keywords.length !== 0 && memes.length === 0){
+            <div class="row">
+              <div class="col-12 text-center">
+                NMF Error...
+                <br />
+                <br />
+                <br />
+                <small><small>it means No Memes Found</small></small>
               </div>
             </div>
           }

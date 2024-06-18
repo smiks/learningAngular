@@ -10,7 +10,7 @@ import { BASE_URL } from './config'
 export class MemesService {
 
   searchMemesURL: string = BASE_URL + "post/extSearch/"
-  likeMemeURL: string = BASE_URL + "post/extSearch/"
+  likeMemeURL: string = BASE_URL + "post/updateLikeCount/"
 
   constructor(private http: HttpClient) { }
 

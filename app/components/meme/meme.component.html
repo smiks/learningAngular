@@ -11,8 +11,10 @@
     </div>
     <div class="row">
         <div class="col-lg-8 col-md-8 col-12 text-left memeLike">
-            @if(!likedMemes[meme.id]){
-                <span class="likeIcon pointer" (click)="likeMeme(meme.id)">&uArr;</span>
+            @if(likedMemes[meme.id]){
+                <img src='https://cdn-icons-png.flaticon.com/512/10099/10099539.png' class="likeIcon" />
+            }@else {
+                <img src='https://cdn-icons-png.flaticon.com/512/16/16287.png'class="likeIcon pointer" (click)="likeMeme(meme)" />
             }
             <span>{{meme.likes | numberpipe: 4 }}</span>
         </div>
