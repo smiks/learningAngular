@@ -1,6 +1,6 @@
 # A simple Angular 17 example
 A simple Angular 17 example with various functionalities that Angular 17 offers.
-You can test the site here: https://memes.secure-atom.com
+You can test the site here: https://angular.secure-atom.com
 
 ## FAQ
 
