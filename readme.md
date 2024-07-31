@@ -17,6 +17,7 @@ You can test the site here: https://angular.secure-atom.com
 	- services
 	- interfaces
 	- guards
+	- signals
 
 - It also has some other stuff
 	Such as

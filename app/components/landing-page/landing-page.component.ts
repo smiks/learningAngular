@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, signal, effect } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { DOCUMENT } from '@angular/common';
 import { Router } from '@angular/router';
@@ -20,9 +20,11 @@ export class LandingPageComponent implements OnInit {
   quoteForm: FormGroup;
   memes: any = []
   locPrefix: string = ""
-  keywords: string = ""
+  keywords = signal<string>("")
+  loadingInProgress: boolean = false
   likedMemes: IntegerExists = {}
   localStorageKey: string = "likedMemes"
+  subscriptions: any = []
 
   constructor(
     private fb: FormBuilder, 
@@ -32,6 +34,16 @@ export class LandingPageComponent implements OnInit {
     ) {
     this.quoteForm = this.fb.group({
       keywords: ['', [Validators.required]]
+    })
+
+    effect(() => {
+      if(this.keywords().length >= 3) {
+        this.loadingInProgress = true
+        this.fetchMemes()
+      }
+      else if(this.keywords().length == 0){
+        this.memes = []
+      }
     })
   }
 
@@ -43,15 +55,24 @@ export class LandingPageComponent implements OnInit {
     }
   }
 
+  ngOnDestroy(): void {
+    for(const s of this.subscriptions){
+      s.unsubscribe()
+    }
+  }
+
   fetchMemes() {
     const _data: any = {
       key: 'myPrecious',
-      keywords: this.keywords
+      keywords: this.keywords()
     }
-    this.memesService.getMemes(_data).subscribe( (response: any) => {
+    const tmp = this.memesService.getMemes(_data).subscribe( (response: any) => {
       this.memes = Object.values(response.memes)
       this.locPrefix = response.locPrefix
+      this.loadingInProgress = false
     })
+
+    this.subscriptions.push(tmp)
   }
 
   updateLikeDb(memeId: number) {
@@ -59,7 +80,8 @@ export class LandingPageComponent implements OnInit {
       key: 'myPrecious',
       memeId: memeId
     }
-    this.memesService.likeMeme(_data).subscribe( (response: any) => { })
+    const tmp = this.memesService.likeMeme(_data).subscribe( (response: any) => { })
+    this.subscriptions.push(tmp)
   }
 
   updateLikedMemes = (memeId: number, lm: IntegerExists): any => {

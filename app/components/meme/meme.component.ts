@@ -3,7 +3,7 @@ import { UpperCasePipe } from '@angular/common';
 import { NumberPipe } from '../../extras/pipes'
 import { Meme } from '../../models/meme'
 import { IntegerExists } from '../../models/general'
-import { loadLocalStorage, storeLocalStorage, safeReadFromObject } from '../../extras/helpers'
+import { safeReadFromObject } from '../../extras/helpers'
 
 @Component({
   selector: 'app-meme',

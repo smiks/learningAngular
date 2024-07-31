@@ -1,10 +1,7 @@
 <div class="demo-content container container-fluid">
     <form [formGroup]="quoteForm" class="row searchBar" (ngSubmit)="onSubmit();">
-        <div class="col-4">
-          <input class="form-control" placeholder="Keywords" formControlName="keywords"/>
-        </div>
-        <div class="col-2">
-          <button class="btn btn-primary">SEARCH 4 Memes</button>
+        <div class="col-6">
+          <input class="form-control" placeholder="Keywords" formControlName="keywords" [(ngModel)]="keywords"/>
         </div>
       </form>
     
@@ -18,6 +15,11 @@
               <div class="col-12 text-center">
                 <app-meme [meme]="meme" [locPrefix]="locPrefix" [likedMemes]="likedMemes" [updateLikedMemes]="updateLikedMemes"></app-meme>
               </div>
+            </div>
+          }
+          @if(loadingInProgress){
+            <div>
+              Minions are gathering the memes now.....
             </div>
           }
           @if(keywords.length !== 0 && memes.length === 0){
